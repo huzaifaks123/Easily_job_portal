@@ -1,0 +1,53 @@
+<% if(job){ %>
+<div id="details-card" class="card mt-5 mx-auto w-75 position-relative">
+        <button type="button" class="btn btn-primary w-25 ms-3 mt-3">Actively Hiring</button>
+    <div class="card-body">
+        <h3 class="card-title">
+            <%= job.company_name%>
+        </h3>
+        <h5 class="card-subtitle mb-2">
+            <%= job.job_category%><span>&nbsp;&nbsp;<%= job.designation%></span>
+        </h5>
+        <h6 class="card-text">
+            <%= job.job_location%>
+        </h6>
+        <h6 class="card-text">
+            ₹ <%= job.salary %> lpa
+        </h6>
+        <h6 class="card-text">
+            Apply By <%= job.date %>
+        </h6>
+        <h6 class="card-text">
+            Number of openings <%= job.openings %>
+        </h6>
+        <h6 class="card-text mb-3">
+            <a href="/jobs/<%= job.id%>/applicants">
+                Applicants
+            </a>
+            <%= job.applicants_count %>
+        </h6>
+        <div class="skill-container mb-4 w-25">
+            <%if(job.skills){ if (typeof job.skills !=='string' ) { for(skill of job.skills){%>
+                <a href="https://www.google.com/search?q=<%= skill %>" target="_blank"><button type="button" class="btn btn-outline-primary mb-1">
+                    <%= skill %>
+                </button></a>
+                <%}}else{%>
+                    <a href="https://www.google.com/search?q=<%= skill %>" target="_blank"><button type="button" class="btn btn-outline-primary mb-1">
+                        <%= job.skills %>
+                    </button></a>
+                    <%} }%>
+        </div>
+
+        <% if( recruiter && job.recruiterId == locals.recruiter.id){%>
+            <a href="/jobs/<%= job.id%>/update"><button type="button"
+                    class="action btn btn-outline-primary">Edit</button></a>
+            <button type="button" onclick="deleteJob('<%= job.id %>')" class="action btn btn-outline-primary">Delete</button>
+            <%}else{%>
+                <a href="/jobs/<%= job.id%>/apply"><button type="button"
+                        class="action btn btn-outline-primary">Apply</button></a>
+                <%}%>
+    </div>
+    <div id="details-advertisement" class="position-absolute rounded">
+        <img class="rounded" src="https://files.codingninjas.com/codingninjas-.webp" width="100%" alt="advertisement">
+    </div>
+</div><%}%>

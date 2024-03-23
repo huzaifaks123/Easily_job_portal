@@ -1,0 +1,53 @@
+<% if(jobs){%>
+    <% if(jobs.length==0) {%>
+        <h1 class="text-light text-center my-5">No Jobs Available <% if(results){%><span> for "<%= results%>"</span>
+                <%}%>
+        </h1>
+        <%}else{%>
+            <% if(results){%>
+                <h1 class="text-light text-center my-5">Showing Results for "<%= results%>"</h1>
+                <%}%>
+                    <div id="list-container" class="d-flex justify-content-around flex-wrap">
+                        <%}%>
+                            <% for(job of jobs){ %>
+                                <div id="job-card" class="card mb-3" style="width: 18rem;">
+                                    <button type="button" class="btn btn-primary w-50 ms-3 mt-3">Actively
+                                        Hiring</button>
+                                    <div class="card-body">
+                                        <h3 class="card-title">
+                                            <%= job.company_name%>
+                                        </h3>
+                                        <h5 class="card-subtitle mb-2">
+                                            <%= job.job_category%><span>&nbsp;&nbsp;<%= job.designation%></span>
+                                        </h5>
+                                        <h6 class="card-text">
+                                            <%= job.job_location%>
+                                        </h6>
+                                        <h6 class="card-text">
+                                            ₹ <%= job.salary %> lpa
+                                        </h6>
+                                        <div class="skill-container mb-4">
+                                            <% if(job.skills){ if (typeof job.skills !=='string' ) { for(skill of
+                                                job.skills){%>
+                                                <a href="https://www.google.com/search?q=<%= skill %>"
+                                                    target="_blank"><button type="button"
+                                                        class="btn btn-outline-primary mb-2">
+                                                        <%= skill %>
+                                                    </button></a>
+                                                <%}}else{%>
+                                                    <a href="https://www.google.com/search?q=<%= skill %>"
+                                                        target="_blank"><button type="button"
+                                                            class="btn btn-outline-primary mb-2">
+                                                            <%= job.skills %>
+                                                        </button></a>
+                                                    <%} }%>
+                                        </div>
+                                        <div id="details-button" class="details-button">
+                                            <a href="/jobs/<%= job.id%>"><button type="button"
+                                                    class=" btn btn-outline-primary w-100">Details</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                    </div>
+                    <%}%>

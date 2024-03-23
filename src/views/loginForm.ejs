@@ -1,0 +1,22 @@
+<div id="login-container"  class="w-50 ms-3">
+    <h1>Experience <span>Easily!</span></h1>
+    <%if(errorMessage){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= errorMessage %>
+        </div>
+        <%}%>
+    <form action="/login" id="login-form" method="post">
+        <div class="mb-3">
+            <label for="InputEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="email">
+        </div>
+        <div class="mb-5">
+            <label for="InputPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="already">
+        New User? Register here <a href="/register"><button class="btn btn-primary">Register</button></a>
+    </div>
+</div>
