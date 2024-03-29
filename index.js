@@ -1,8 +1,10 @@
+import dotenv from 'dotenv';
+dotenv.config();
 // import express from express-module
 import express from 'express';
 
 // declare port variable
-const port = 4400;
+const port = process.env.PORT || 4400;
 
 // import path from path-module
 import path from "path";
