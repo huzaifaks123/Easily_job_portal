@@ -40,7 +40,6 @@ export default class jobsModel {
     // function to delete a job
     static delete(id) {
         const index = jobs.findIndex(job => job.id == id)
-        console.log("index", index);
         jobs.splice(index, 1)
     }
 
@@ -58,17 +57,47 @@ export default class jobsModel {
 
     // function to show search Results
     static searchResult = (name) => {
-        console.log("NAME", name)
         let filteredJobs = jobs.filter((job) => {
             return job.job_category == name ||
                 job.designation == name ||
                 job.job_location == name ||
                 job.company_name == name;
         });
-        console.log(filteredJobs);
         return filteredJobs;
     };
 
 
 }
-let jobs = []
+let jobs = [
+    {
+        id: 2,
+        recruiterId: '1',
+        job_category: 'Tech',
+        designation: 'JAVA Developer',
+        job_location: 'Noida',
+        salary: '6-10',
+        company_name: 'Flipkart',
+        openings: '2',
+        applicants_count: 0,
+        skills: [ 'HTML', 'CSS', 'SQL', 'MongoDB' ],
+        date: '2024-04-19'
+      },
+      {
+        id: 1,
+        recruiterId: '1',
+        job_category: 'Tech',
+        designation: 'DevOps',
+        job_location: 'Mumbai',
+        salary: '9-10',
+        company_name: 'Google',
+        openings: '3',
+        applicants_count: 0,
+        skills: [
+          'React',  'HTML',
+          'CSS',    'JS',
+          'NodeJs', 'Express',
+          'SQL'
+        ],
+        date: '2024-03-31'
+      }
+]
